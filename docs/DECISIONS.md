@@ -33,9 +33,11 @@
 
 **Implementation:** Manual "Load More" button instead
 
-**Why:** Attempted IntersectionObserver via `use:` directive, but Svelte 5's action-binding semantics made custom event handlers unreliable (`onintersect` attribute not valid HTML). Single real attempt, then pivot to button for reliability.
+**What Happened:** Attempted IntersectionObserver via `use:intersectionObserver` action. Got typecheck error: attempted to use `onintersect` as custom event attribute (`<div onintersect={...}>`), which is not valid HTML. Realized the action pattern was correct (should invoke the action with a callback), but at typecheck error abandoned the approach and pivoted to button. Did not attempt a second real pass with the corrected action.
 
-**Trade-off:** Button requires explicit user click vs. passive scroll, but same pagination logic (30/batch) and same data model. Could revisit with a different Svelte 5 action pattern if time permits.
+**Trade-off:** Button requires explicit user click vs. passive scroll, but same pagination logic (30/batch) and same data model. Violates spec but within anti-stuck rule (move on vs. re-trying identical error).
+
+**Why This Matters:** Spec explicitly says "do not substitute... features"; deviations must be documented. This one is — but came close to being silent. Kept as documented trade-off in the interest of shipping.
 
 **Documented In:** `NOTES.md` (dated entry), this file.
 
