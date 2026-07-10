@@ -1,42 +1,58 @@
-# sv
+# Pokédex
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern, animated Pokédex web app built with SvelteKit, TypeScript, and Tailwind CSS.
 
-## Creating a project
+[![SvelteKit](https://img.shields.io/badge/SvelteKit-5-FF3E00?style=flat-square&logo=svelte&logoColor=white)](https://kit.svelte.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS%20v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white)](https://azagatti.github.io/pokedex-off-as1/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+**[Live Demo →](https://azagatti.github.io/pokedex-off-as1/)**
 
-```sh
-# create a new project
-npx sv create my-app
+## Features
+
+- **Pokédex List** – Browse all Pokémon with smart pagination
+  - Search by name or Dex number
+  - Filter by type (18 types)
+  - Filter by generation (Gen 1–9)
+  - Sort by Dex # or base stats
+  
+- **Detail Page** – Full Pokémon data
+  - Official artwork + sprite variants
+  - Type-colored badges
+  - Animated stat bars
+  - Abilities & moves
+  - Evolution chain
+  
+- **Berries** – Berry reference
+  - List and detail pages
+  - Flavor breakdown
+  
+- **Favorites** – Persistent (localStorage)
+- **Theme Toggle** – Light/dark mode
+- **Responsive** – Mobile-first
+- **Accessible** – ARIA labels, keyboard nav
+
+## Tech Stack
+
+- **SvelteKit 5** (Svelte 5 runes, TypeScript strict)
+- **Tailwind CSS v4** + lucide-svelte
+- **zod** validation, **stores** + localStorage
+- **oxlint + oxfmt** (via ultracite), **lefthook**
+- **vitest + Playwright**, **GitHub Pages**
+
+## Run Locally
+
+```bash
+npm install
+npm run dev      # http://localhost:5174/pokedex-off-as1
+npm run build    # production build
+npm run lint
+npm run check    # typecheck
+npm run test     # vitest + Playwright
 ```
 
-To recreate this project with the same configuration:
+## Docs
 
-```sh
-# recreate this project
-npx sv@0.16.2 create --template minimal --types ts --add tailwindcss="plugins:none" vitest="usages:unit,component" playwright sveltekit-adapter="adapter:static" --no-install .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- [Architecture](./docs/ARCHITECTURE.md) – Data flow, caching, routes
+- [Decisions](./docs/DECISIONS.md) – Tech choices, spec deviations

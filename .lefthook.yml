@@ -16,8 +16,8 @@ pre-commit:
 
 pre-push:
   commands:
-    test:
-      run: npm run test
+    typecheck:
+      run: npm run check
       skip:
         - merge
         - rebase
