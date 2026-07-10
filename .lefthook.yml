@@ -1,0 +1,23 @@
+pre-commit:
+  commands:
+    oxlint:
+      glob: "src/**/*.{ts,svelte}"
+      run: npx oxlint {staged_files}
+      stage_fixed: true
+    oxfmt:
+      glob: "src/**/*.{ts,svelte}"
+      run: npx oxfmt --write {staged_files}
+      stage_fixed: true
+    typecheck:
+      run: npm run check
+      skip:
+        - merge
+        - rebase
+
+pre-push:
+  commands:
+    test:
+      run: npm run test
+      skip:
+        - merge
+        - rebase
