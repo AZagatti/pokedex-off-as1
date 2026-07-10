@@ -36,7 +36,12 @@
 - README + ARCHITECTURE + DECISIONS docs
 
 **PENDING:**
-- GitHub Actions build/deploy (in progress)
-- Live Pages URL verification
-- Lighthouse audit (≥90 target)
-- E2E tests (Playwright requires system deps)
+- GitHub Actions build/deploy (CI fixed: added `npx playwright install --with-deps`)
+- Live Pages URL verification (https://azagatti.github.io/pokedex-off-as1/)
+- Lighthouse audit (≥90 target, once Pages live)
+- Visual regression testing (Playwright e2e now runnable in CI)
+
+## Critical Fixes Applied
+
+- **GitHub Actions CI:** Added Playwright browser deps installation before test step (was blocking deploy)
+- **Infinite Scroll Deviation:** Updated DECISIONS.md to honestly document abandonment after first error, per spec deviation disclosure rule
